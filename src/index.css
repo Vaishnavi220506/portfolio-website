@@ -3202,7 +3202,7 @@
   z-index: 0;
   pointer-events: none;
   opacity: .62;
-  background-image: linear-gradient(120deg, rgba(251,249,245,.25) 8%, rgba(251,249,245,.12) 47%, rgba(251,249,245,.3) 100%), url("/assets/scenic-backdrop.jpg");
+  background-image: linear-gradient(120deg, rgba(251,249,245,.25) 8%, rgba(251,249,245,.12) 47%, rgba(251,249,245,.3) 100%);
   background-size: cover;
   background-position: center;
   filter: saturate(.86) brightness(1.03);
@@ -3233,7 +3233,7 @@
 }
 .dark .scenic-backdrop {
   opacity: .72;
-  background-image: linear-gradient(120deg, rgba(8,35,29,.48) 8%, rgba(8,35,29,.2) 47%, rgba(8,35,29,.58) 100%), url("/assets/scenic-backdrop.jpg");
+  background-image: linear-gradient(120deg, rgba(8,35,29,.48) 8%, rgba(8,35,29,.2) 47%, rgba(8,35,29,.58) 100%);
 }
 .social-link {
   display: inline-flex;
@@ -3754,7 +3754,7 @@
   color: #fb7185;
 }
 .hero-scene {
-  background-image: linear-gradient(145deg, rgba(20,45,37,.1), rgba(20,45,37,.5)), url("/assets/hero-scene.jpg");
+  background-image: linear-gradient(145deg, rgba(20,45,37,.1), rgba(20,45,37,.5));
   background-position: center;
   background-size: cover;
 }

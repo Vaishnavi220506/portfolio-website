@@ -169,7 +169,7 @@ export const achievements: Achievement[] = [
     issuer: "British Council · VIT Vellore",
     date: "02–03 Sep 2026",
     label: "Hackathon participation",
-    image: "/assets/achievement-wins-aid.png",
+    image: "achievement-wins-aid.png",
     url: "https://lnkd.in/p/d7Sxt8tw",
   },
   {
@@ -177,7 +177,7 @@ export const achievements: Achievement[] = [
     issuer: "IBM Career Education Program",
     date: "16 Jul 2026",
     label: "Professional certificate",
-    image: "/assets/achievement-ibm.png",
+    image: "achievement-ibm.png",
     url: "https://courses.ibmcep.cognitiveclass.ai/certificates/e6e8e6d0defb451a8b27bf824cebcfda",
   },
   {
@@ -185,7 +185,7 @@ export const achievements: Achievement[] = [
     issuer: "Adobe · Unstop",
     date: "09 Aug 2026",
     label: "Hackathon participation",
-    image: "/assets/achievement-adobe.png",
+    image: "achievement-adobe.png",
     url: "https://unstop.com/certificate-preview/a6807747-82df-43c7-8f64-bfcc3b6952f2?utm_campaign=site-emails&utm_medium=d2c-automated&utm_source=wow-look-at-your-certificate-adobe-university-hackathon-2026",
   },
 ];

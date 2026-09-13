@@ -29,12 +29,14 @@ import { cn } from "@/lib/utils";
 import { achievements, contributions, focusAreas, projects, stackGroups } from "@/data/portfolio";
 
 const EMAIL = "vaishnaviharish2006@gmail.com";
+const ASSET_BASE = import.meta.env.BASE_URL;
+const asset = (filename: string) => `${ASSET_BASE}assets/${filename}`;
 
 function ProjectVisual({ type }: { type: "rescue" | "clarity" | "race" }) {
   const visualImages = {
-    rescue: "/assets/rescue-first-screen.png",
-    clarity: "/assets/clarity-project.png",
-    race: "/assets/race-project.png",
+    rescue: asset("rescue-first-screen.png"),
+    clarity: asset("clarity-project.png"),
+    race: asset("race-project.png"),
   };
   const visualLabels = {
     rescue: "Emergency coordination",
@@ -152,11 +154,11 @@ export default function Home() {
 
   return (
     <div className="min-h-svh overflow-x-hidden bg-transparent text-foreground">
-      <div className="scenic-backdrop" aria-hidden="true" />
+      <div className="scenic-backdrop" style={{ backgroundImage: `linear-gradient(120deg, rgba(8,35,29,.48) 8%, rgba(8,35,29,.2) 47%, rgba(8,35,29,.58) 100%), url("${asset("scenic-backdrop.jpg")}")` }} aria-hidden="true" />
       <header className="sticky top-0 z-50 border-b border-stone-200/70 bg-[#fbf9f5]/90 backdrop-blur-md dark:border-stone-800/70 dark:bg-[#121110]/90" data-testid="site-header">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <a href="#top" className="group flex items-center gap-3" data-testid="header-logo-link" onClick={() => setMobileMenuOpen(false)}>
-            <img src="/assets/github-avatar.jpg" alt="Vaishnavi GitHub profile picture" className="h-9 w-9 rounded-full border border-rose-300 object-cover shadow-[4px_4px_0_#1c1917] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" data-testid="github-avatar" />
+            <img src={asset("github-avatar.jpg")} alt="Vaishnavi GitHub profile picture" className="h-9 w-9 rounded-full border border-rose-300 object-cover shadow-[4px_4px_0_#1c1917] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" data-testid="github-avatar" />
             <span className="font-heading text-xl tracking-tight">Vaishnavi</span>
           </a>
           <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation" data-testid="desktop-navigation">
@@ -212,7 +214,7 @@ export default function Home() {
             <div className="reveal-item relative mx-auto w-full max-w-sm lg:pb-4" data-reveal="hero-art" data-testid="hero-profile-card">
               <div className="absolute -right-2 -top-6 z-10 flex h-20 w-20 rotate-6 animate-float items-center justify-center rounded-full border border-rose-200 bg-rose-100 text-center font-mono text-[10px] uppercase leading-4 tracking-widest text-rose-700 dark:border-rose-900 dark:bg-rose-950 dark:text-rose-300">keep<br />building</div>
               <div className="relative overflow-hidden rounded-[2rem] border border-stone-200 bg-white p-3 shadow-[12px_12px_0_#f4d6d9] dark:border-stone-700 dark:bg-stone-900 dark:shadow-[12px_12px_0_#3d1d24]">
-                <div className="hero-scene relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-stone-200 dark:bg-stone-800" style={{ backgroundImage: 'linear-gradient(145deg, rgba(20,45,37,.08), rgba(20,45,37,.52)), url("/assets/github-avatar.jpg")' }} data-testid="hero-scenic-art">
+                <div className="hero-scene relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-stone-200 dark:bg-stone-800" style={{ backgroundImage: `linear-gradient(145deg, rgba(20,45,37,.08), rgba(20,45,37,.52)), url("${asset("github-avatar.jpg")}")` }} data-testid="hero-scenic-art">
                   <div className="hero-scene-hill hero-scene-hill-back" /><div className="hero-scene-hill hero-scene-hill-front" />
                   <div className="hero-scene-quote"><Sparkles size={18} /><span>make it useful<br />then make it clear</span></div>
                   <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/50 bg-[#fbf9f5]/85 p-4 backdrop-blur-md dark:border-stone-700/80 dark:bg-stone-950/80">
@@ -307,7 +309,7 @@ export default function Home() {
             <div className="achievement-carousel mt-10" data-reveal="achievement-slide" onMouseEnter={() => setAchievementPaused(true)} onMouseLeave={() => setAchievementPaused(false)} onFocusCapture={() => setAchievementPaused(true)} onBlurCapture={(event) => { const nextTarget = event.relatedTarget; if (!(nextTarget instanceof Node) || !event.currentTarget.contains(nextTarget)) setAchievementPaused(false); }}>
               <a href={currentAchievement.url} target="_blank" rel="noopener noreferrer" className="achievement-slide" aria-label={"Open " + currentAchievement.title} data-testid="achievement-slide">
                 <div className="achievement-image-wrap">
-                  <img src={currentAchievement.image} alt={currentAchievement.title + " certificate"} className="achievement-image" loading="lazy" />
+                  <img src={asset(currentAchievement.image)} alt={currentAchievement.title + " certificate"} className="achievement-image" loading="lazy" />
                 </div>
                 <div className="achievement-copy">
                   <div className="flex items-center justify-between gap-4">
