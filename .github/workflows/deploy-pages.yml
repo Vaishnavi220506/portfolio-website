@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build site
-        run: npm run build -- --base=/portfolio-website/
+        run: npx vite build --base=/portfolio-website/ && node scripts/prepare-sites-build.mjs
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
