@@ -4106,6 +4106,12 @@
 .project-visual-stempulse {
   background: #2d1836;
 }
+.project-visual-surface-kavach {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(251, 113, 133, .32), transparent 24%),
+    radial-gradient(circle at 12% 78%, rgba(45, 212, 191, .2), transparent 28%),
+    linear-gradient(135deg, #101b27, #152d32 58%, #2a1728);
+}
 .project-visual-surface {
   position: absolute;
   inset: 0;
@@ -4159,13 +4165,19 @@
   letter-spacing: -.045em;
 }
 .project-visual-surface-steps {
+  align-self: flex-end;
   display: flex;
   flex-wrap: wrap;
   gap: .55rem;
+  justify-content: flex-end;
+  max-width: min(100%, 31rem);
+  margin-top: auto;
+  margin-bottom: 3.5rem;
   color: #e7e5e4;
   letter-spacing: .08em;
 }
 .project-visual-surface-steps span {
+  white-space: nowrap;
   border: 1px solid rgba(255, 247, 237, .24);
   border-radius: 999px;
   padding: .5rem .65rem;
