@@ -29,12 +29,13 @@ import { cn } from "@/lib/utils";
 import { achievements, contributions, focusAreas, githubStats, projects, stackGroups } from "@/data/portfolio";
 
 const EMAIL = "vaishnaviharish2006@gmail.com";
-const RESUME_URL = "https://drive.google.com/drive/home";
 const ASSET_BASE = import.meta.env.BASE_URL;
 const asset = (filename: string) => `${ASSET_BASE}assets/${filename}`;
+const RESUME_URL = asset("resume-polished-final.pdf");
 
 function ProjectVisual({ type }: { type: "kavach" | "stempulse" | "rescue" | "clarity" | "race" }) {
   const visualImages = {
+    kavach: asset("kavach-front-page.png"),
     rescue: asset("rescue-first-screen.png"),
     clarity: asset("clarity-project.png"),
     race: asset("race-project.png"),
@@ -49,13 +50,7 @@ function ProjectVisual({ type }: { type: "kavach" | "stempulse" | "rescue" | "cl
 
   return (
     <div className={`project-visual project-visual-${type}`} data-testid={`project-${type}-visual`} aria-hidden="true">
-      {type === "kavach" ? (
-        <div className="project-visual-surface project-visual-surface-kavach">
-          <span className="project-visual-surface-kicker">OBSERVE / EXPLAIN / REVIEW</span>
-          <strong>Evidence<br />before answers.</strong>
-          <div className="project-visual-surface-steps"><span>01 Track</span><span>02 Explain</span><span>03 Replay</span></div>
-        </div>
-      ) : type === "stempulse" ? (
+      {type === "stempulse" ? (
         <div className="project-visual-surface project-visual-surface-stempulse">
           <span className="project-visual-surface-kicker">STEM / PATHWAYS / RETURN</span>
           <strong>Build confidence<br />with evidence.</strong>

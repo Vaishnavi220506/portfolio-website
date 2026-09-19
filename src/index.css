@@ -4103,6 +4103,11 @@
 .project-visual-kavach {
   background: #10151d;
 }
+.project-visual-image-kavach {
+  object-fit: contain;
+  object-position: center;
+  background: #10151d;
+}
 .project-visual-stempulse {
   background: #2d1836;
 }
@@ -4212,6 +4217,22 @@
   display: none;
 }
 @media (max-width: 640px) {
+  .project-visual-surface {
+    gap: .75rem;
+    padding: 1.25rem;
+  }
+  .project-visual-surface strong {
+    font-size: clamp(2rem, 11vw, 3rem);
+  }
+  .project-visual-surface-steps {
+    align-self: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 3.25rem;
+  }
+  .project-visual-surface-steps span {
+    padding: .4rem .5rem;
+    font-size: 9px;
+  }
   .hero-actions {
     width: 100%;
     padding: 0;
