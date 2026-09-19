@@ -7,7 +7,7 @@ export interface Project {
   repoUrl: string;
   liveUrl?: string;
   tags: string[];
-  visual: "rescue" | "clarity" | "race";
+  visual: "kavach" | "stempulse" | "rescue" | "clarity" | "race";
 }
 
 export interface Contribution {
@@ -35,10 +35,38 @@ export interface Achievement {
   url: string;
 }
 
+export const githubStats = {
+  publicRepositories: 22,
+};
+
 export const projects: Project[] = [
   {
+    title: "KAVACH",
+    eyebrow: "01 / Computer vision systems",
+    description:
+      "An explainable video-intelligence prototype that turns warehouse footage into tracked objects, evidence-backed safety events, and replayable incident records.",
+    detail:
+      "I built it around structured evidence first: YOLO perception, ByteTrack identities, temporal behaviour rules, SQLite incident history, and a grounded assistant that explains only what the evidence supports.",
+    highlights: ["YOLO + ByteTrack temporal tracking", "Explainable behaviour and risk scoring", "SQLite evidence replay + grounded assistant"],
+    repoUrl: "https://github.com/Vaishnavi220506/kavach-video-intelligence",
+    tags: ["Python", "OpenCV", "YOLO", "FastAPI"],
+    visual: "kavach",
+  },
+  {
+    title: "STEMPulse",
+    eyebrow: "02 / Social impact product",
+    description:
+      "A women-first STEM pathways platform for learning, opportunities, evidence-aware confidence, and career re-entry support.",
+    detail:
+      "The product maps people to a practical next step instead of treating confidence or career breaks as missing potential: profile evidence, skill freshness, opportunity matching, and a shortest-path plan.",
+    highlights: ["Learn, work, fund, and re-entry pathways", "Evidence-aware confidence signals", "Explainable opportunity matching"],
+    repoUrl: "https://github.com/Vaishnavi220506/StemPulse",
+    tags: ["React", "Python", "FastAPI", "Career UX"],
+    visual: "stempulse",
+  },
+  {
     title: "RescueLink",
-    eyebrow: "01 / Product engineering",
+    eyebrow: "03 / Product engineering",
     description:
       "A real-time emergency coordination platform that helps people request support, offer resources, and share trusted local updates.",
     detail:
@@ -51,7 +79,7 @@ export const projects: Project[] = [
   },
   {
     title: "ClarityLoop",
-    eyebrow: "02 / AI systems",
+    eyebrow: "04 / AI systems",
     description:
       "An open-source workspace that stress-tests a project idea before time, money, and effort are spent building it.",
     detail:
@@ -64,7 +92,7 @@ export const projects: Project[] = [
   },
   {
     title: "RaceVerse",
-    eyebrow: "03 / Experimental ML",
+    eyebrow: "05 / Experimental ML",
     description:
       "A browser-based 3D racing prototype with procedural tracks, local multiplayer, AI opponents, and a trained racing policy.",
     detail:
@@ -78,6 +106,16 @@ export const projects: Project[] = [
 ];
 
 export const contributions: Contribution[] = [
+  {
+    project: "ONNX",
+    repo: "onnx/onnx",
+    pullRequest: "#8448",
+    url: "https://github.com/onnx/onnx/pull/8448",
+    description:
+      "Fixed custom callback lifetime handling in shape inference so callbacks remain valid for the full inference operation.",
+    status: "Merged",
+    tags: ["C++", "ONNX", "Memory safety"],
+  },
   {
     project: "PyRIT",
     repo: "microsoft/PyRIT",
@@ -119,24 +157,54 @@ export const contributions: Contribution[] = [
     tags: ["TypeScript", "Agentic systems", "Cloud API"],
   },
   {
-    project: "PyTorch",
-    repo: "pytorch/pytorch",
-    pullRequest: "#196111",
-    url: "https://github.com/pytorch/pytorch/pull/196111",
+    project: "blind-assist",
+    repo: "violetljj/blind-assist",
+    pullRequest: "#49",
+    url: "https://github.com/violetljj/blind-assist/pull/49",
     description:
-      "Proposed splitting OrderedSetVariable from SetVariable in the TorchDynamo compiler frontend.",
+      "Proposed accessibility hardening for the default flow at large font sizes.",
     status: "Open",
-    tags: ["C++", "Python", "Compilers"],
+    tags: ["Android", "Accessibility", "UI"],
+  },
+  {
+    project: "Ersilia model template",
+    repo: "ersilia-os/eos-template",
+    pullRequest: "#95",
+    url: "https://github.com/ersilia-os/eos-template/pull/95",
+    description:
+      "Proposed automatic model releases when generated outputs change.",
+    status: "Open",
+    tags: ["GitHub Actions", "Release automation", "Python"],
+  },
+  {
+    project: "Ersilia workflows",
+    repo: "ersilia-os/ersilia-model-workflows",
+    pullRequest: "#7",
+    url: "https://github.com/ersilia-os/ersilia-model-workflows/pull/7",
+    description:
+      "Proposed reusable workflow automation for model releases when outputs change.",
+    status: "Open",
+    tags: ["GitHub Actions", "CI/CD", "Automation"],
   },
   {
     project: "vLLM",
     repo: "vllm-project/vllm",
-    pullRequest: "#55464",
-    url: "https://github.com/vllm-project/vllm/pull/55464",
+    pullRequest: "#56444",
+    url: "https://github.com/vllm-project/vllm/pull/56444",
     description:
-      "Proposed a tensor-parallel Mixture-of-Experts sequence-parallel compile pass.",
+      "Proposed a bugfix for N-gram PLE with pipeline parallelism.",
     status: "Open",
-    tags: ["PyTorch", "CUDA", "vLLM"],
+    tags: ["PyTorch", "CUDA", "Inference"],
+  },
+  {
+    project: "vLLM",
+    repo: "vllm-project/vllm",
+    pullRequest: "#56413",
+    url: "https://github.com/vllm-project/vllm/pull/56413",
+    description:
+      "Proposed avoiding duplicate host allocation for UVA weights.",
+    status: "Open",
+    tags: ["PyTorch", "CUDA", "Memory"],
   },
 ];
 
@@ -149,17 +217,17 @@ export const stackGroups: StackGroup[] = [
   {
     label: "Web & product",
     description: "A practical web toolkit for turning an idea into something people can use.",
-    items: ["React", "Next.js", "Tailwind CSS", "Node.js", "Express", "FastAPI", "Vite", "REST APIs"],
+    items: ["React", "Next.js", "Tailwind CSS", "Node.js", "Express", "FastAPI", "Vite", "REST APIs", "Streamlit"],
   },
   {
     label: "ML & data",
     description: "Libraries and ideas for experiments that stay grounded in real constraints.",
-    items: ["PyTorch", "Hugging Face", "scikit-learn", "Neural networks", "CNNs", "Transformers", "NumPy", "Pandas"],
+    items: ["PyTorch", "Hugging Face", "scikit-learn", "OpenCV", "Ultralytics YOLO", "Transformers", "NumPy", "Pandas", "Ollama"],
   },
   {
     label: "Tools & data",
     description: "The infrastructure around the code: shipping, testing, and making it dependable.",
-    items: ["Git", "GitHub Actions", "Docker", "PostgreSQL", "PostGIS", "MySQL", "SQLite", "SQLAlchemy"],
+    items: ["Git", "GitHub Actions", "Docker", "PostgreSQL", "PostGIS", "MySQL", "SQLite", "SQLAlchemy", "Vercel"],
   },
 ];
 

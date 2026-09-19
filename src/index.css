@@ -4100,6 +4100,77 @@
 .project-visual-race {
   background: #07121a;
 }
+.project-visual-kavach {
+  background: #10151d;
+}
+.project-visual-stempulse {
+  background: #2d1836;
+}
+.project-visual-surface {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.15rem;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  overflow: hidden;
+  color: #fff7ed;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(251, 113, 133, .42), transparent 22%),
+    radial-gradient(circle at 12% 80%, rgba(196, 181, 253, .32), transparent 26%),
+    linear-gradient(135deg, #371631, #20152f 58%, #132c2b);
+}
+.project-visual-surface::before,
+.project-visual-surface::after {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(255, 247, 237, .22);
+  border-radius: 999px;
+}
+.project-visual-surface::before {
+  height: 19rem;
+  width: 19rem;
+  right: -7rem;
+  top: -7rem;
+}
+.project-visual-surface::after {
+  height: 10rem;
+  width: 10rem;
+  left: -4rem;
+  bottom: -4rem;
+}
+.project-visual-surface-kicker,
+.project-visual-surface-steps {
+  position: relative;
+  z-index: 1;
+  font: 10px 'JetBrains Mono Variable', monospace;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.project-visual-surface-kicker {
+  color: #fda4af;
+}
+.project-visual-surface strong {
+  position: relative;
+  z-index: 1;
+  max-width: 16rem;
+  font: 500 clamp(2rem, 5vw, 4rem)/.98 'Playfair Display Variable', serif;
+  letter-spacing: -.045em;
+}
+.project-visual-surface-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  color: #e7e5e4;
+  letter-spacing: .08em;
+}
+.project-visual-surface-steps span {
+  border: 1px solid rgba(255, 247, 237, .24);
+  border-radius: 999px;
+  padding: .5rem .65rem;
+  background: rgba(4, 18, 14, .24);
+}
 .project-card {
   box-shadow: none;
   transition: none;

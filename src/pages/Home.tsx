@@ -26,19 +26,22 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { achievements, contributions, focusAreas, projects, stackGroups } from "@/data/portfolio";
+import { achievements, contributions, focusAreas, githubStats, projects, stackGroups } from "@/data/portfolio";
 
 const EMAIL = "vaishnaviharish2006@gmail.com";
 const ASSET_BASE = import.meta.env.BASE_URL;
 const asset = (filename: string) => `${ASSET_BASE}assets/${filename}`;
 
-function ProjectVisual({ type }: { type: "rescue" | "clarity" | "race" }) {
+function ProjectVisual({ type }: { type: "kavach" | "stempulse" | "rescue" | "clarity" | "race" }) {
   const visualImages = {
+    kavach: asset("kavach-project.png"),
     rescue: asset("rescue-first-screen.png"),
     clarity: asset("clarity-project.png"),
     race: asset("race-project.png"),
   };
   const visualLabels = {
+    kavach: "Explainable video intelligence",
+    stempulse: "STEM pathways · evidence",
     rescue: "Emergency coordination",
     clarity: "AI feasibility workspace",
     race: "Procedural racing · AI",
@@ -46,7 +49,15 @@ function ProjectVisual({ type }: { type: "rescue" | "clarity" | "race" }) {
 
   return (
     <div className={`project-visual project-visual-${type}`} data-testid={`project-${type}-visual`} aria-hidden="true">
-      <img src={visualImages[type]} alt="" className={`project-visual-image project-visual-image-${type}`} />
+      {type === "stempulse" ? (
+        <div className="project-visual-surface project-visual-surface-stempulse">
+          <span className="project-visual-surface-kicker">STEM / PATHWAYS / RETURN</span>
+          <strong>Build confidence<br />with evidence.</strong>
+          <div className="project-visual-surface-steps"><span>01 Learn</span><span>02 Grow</span><span>03 Restart</span></div>
+        </div>
+      ) : (
+        <img src={visualImages[type]} alt="" className={`project-visual-image project-visual-image-${type}`} />
+      )}
       <div className="project-visual-shade" />
       <span className="project-visual-label">{visualLabels[type]}</span>
     </div>
@@ -113,6 +124,7 @@ export default function Home() {
   };
 
   const currentAchievement = achievements[achievementIndex];
+  const mergedContributionCount = contributions.filter((item) => item.status === "Merged").length;
 
   useEffect(() => {
     if (!achievementAutoPlay || achievementPaused || achievements.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -197,7 +209,7 @@ export default function Home() {
                 I build useful things for <span className="relative whitespace-nowrap text-rose-500">real problems<span className="scribble-underline" /></span>.
               </h1>
               <p className="mt-8 max-w-2xl text-base leading-8 text-stone-600 dark:text-stone-300 sm:text-lg" data-testid="hero-description">
-                I’m a Computer Science student at VIT Vellore exploring the space between machine learning, AI systems, full-stack products, and developer tools. I like turning a rough idea into something people can actually use.
+                I’m a Computer Science student at VIT Vellore building across AI/ML, computer vision, full-stack products, and developer tools. I like turning a rough idea into something people can actually use — and explain.
               </p>
               <div className="hero-actions mt-9 flex flex-wrap gap-3" data-testid="hero-actions">
                 <a href="#projects" className={cn(buttonVariants({ size: "lg" }), "hero-projects-button rounded-full px-5")} data-testid="hero-projects-button">See my projects</a>
@@ -226,9 +238,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="hero-stat-row mt-6 grid grid-cols-3 gap-3" data-testid="hero-stat-row">
-                <div className="stat-cell"><strong data-testid="hero-stat-repositories">16</strong><span>repositories</span></div>
-                <div className="stat-cell"><strong data-testid="hero-stat-contributions">6</strong><span>PRs highlighted</span></div>
-                <div className="stat-cell"><strong data-testid="hero-stat-projects">3</strong><span>flagship builds</span></div>
+                <div className="stat-cell"><strong data-testid="hero-stat-repositories">{githubStats.publicRepositories}</strong><span>repositories</span></div>
+                <div className="stat-cell"><strong data-testid="hero-stat-contributions">{contributions.length}</strong><span>PRs highlighted</span></div>
+                <div className="stat-cell"><strong data-testid="hero-stat-projects">{projects.length}</strong><span>flagship builds</span></div>
               </div>
             </div>
           </div>
@@ -241,7 +253,7 @@ export default function Home() {
               <div><SectionKicker number="01">A little context</SectionKicker><h2 className="max-w-sm font-heading text-4xl leading-tight tracking-tight sm:text-5xl" data-testid="about-heading">Curious about how things work — and how to make them better.</h2></div>
               <div>
                 <div className="max-w-3xl space-y-5 text-lg leading-8 text-stone-600 dark:text-stone-300" data-testid="about-story">
-                  <p>I’m a CSE student at VIT Vellore, and I learn best by making. My projects move between AI systems, web products, computer vision, and experiments that help me understand a system from the inside out.</p>
+                  <p>I’m a CSE student at VIT Vellore, and I learn best by making. My projects move between AI systems, computer vision, web products, and tools that help people learn, work, or respond to real problems.</p>
                   <p>I enjoy taking a project from the first sketch to a working version, then making it clearer through feedback. Readable code, simple interfaces, and useful outcomes matter to me more than making a demo look impressive for a minute.</p>
                   <p>Open source is where that habit becomes a conversation. I contribute fixes, read unfamiliar code, and try to leave a project a little easier for the next person to work with.</p>
                 </div>
@@ -278,7 +290,7 @@ export default function Home() {
 
         <section id="open-source" className="border-y border-stone-200/45 bg-stone-950/5 dark:border-white/10 dark:bg-emerald-950/35" data-testid="open-source-section">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-            <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24"><div><SectionKicker number="03">Open source</SectionKicker><h2 className="font-heading text-4xl leading-tight tracking-tight sm:text-5xl" data-testid="open-source-heading">Small fixes can make a big difference.</h2><p className="mt-6 max-w-sm text-sm leading-7 text-stone-600 dark:text-stone-300" data-testid="open-source-intro">I’m learning in public by working upstream. Here are a few contributions across AI, inference, developer tooling, and compilers.</p><div className="mt-8 flex items-center gap-3"><span className="font-heading text-4xl text-rose-500 dark:text-rose-300" data-testid="open-source-merged-count">02</span><span className="max-w-[120px] font-mono text-[10px] uppercase leading-4 tracking-[0.14em] text-stone-500 dark:text-stone-300">merged fixes, with more in review</span></div></div>
+            <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24"><div><SectionKicker number="03">Open source</SectionKicker><h2 className="font-heading text-4xl leading-tight tracking-tight sm:text-5xl" data-testid="open-source-heading">Small fixes can make a big difference.</h2><p className="mt-6 max-w-sm text-sm leading-7 text-stone-600 dark:text-stone-300" data-testid="open-source-intro">I’m learning in public by working upstream. Here are a few contributions across AI, inference, accessibility, developer tooling, and compilers.</p><div className="mt-8 flex items-center gap-3"><span className="font-heading text-4xl text-rose-500 dark:text-rose-300" data-testid="open-source-merged-count">{String(mergedContributionCount).padStart(2, "0")}</span><span className="max-w-[120px] font-mono text-[10px] uppercase leading-4 tracking-[0.14em] text-stone-500 dark:text-stone-300">merged contributions, with more in review</span></div></div>
               <div><div className="mb-6 flex flex-col gap-3 sm:flex-row" data-testid="open-source-controls"><div className="relative flex-1"><Clipboard size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" /><Input value={contributionQuery} onChange={(event) => setContributionQuery(event.target.value)} placeholder="Search projects, tools, or ideas" className="h-11 rounded-full border-stone-300 bg-white pl-10 text-sm dark:border-stone-700 dark:bg-stone-950" aria-label="Search open source contributions" data-testid="open-source-search-input" /></div><div className="flex rounded-full border border-stone-300 bg-white p-1 dark:border-stone-700 dark:bg-stone-950" data-testid="open-source-filter-group">{(["all", "Merged", "Open"] as const).map((filter) => <button key={filter} type="button" onClick={() => setContributionFilter(filter)} className={cn("rounded-full px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] transition-colors", contributionFilter === filter ? "bg-foreground text-background" : "text-stone-500 hover:text-foreground")} data-testid={`open-source-filter-${filter.toLowerCase()}`}>{filter === "all" ? "All" : filter}</button>)}</div></div>
                 <div className="divide-y divide-stone-200 rounded-2xl border border-stone-200 bg-white dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-950" data-testid="contributions-list">{filteredContributions.length ? filteredContributions.map((item, index) => <a key={item.pullRequest} href={item.url} target="_blank" rel="noopener noreferrer" className="contribution-row reveal-item group block p-5 sm:p-6" data-reveal={`contribution-${item.pullRequest}`} style={{ transitionDelay: `${index * 70}ms` }} data-testid={`contribution-${item.project.toLowerCase().replaceAll(" ", "-")}`}><div className="flex items-start justify-between gap-4"><div><div className="flex flex-wrap items-center gap-2"><span className="font-heading text-xl" data-testid={`contribution-project-${item.pullRequest}`}>{item.project}</span><Badge variant="outline" className={cn("rounded-full font-mono text-[9px] uppercase tracking-wide", item.status === "Merged" ? "border-emerald-300 text-emerald-700 dark:border-emerald-800 dark:text-emerald-300" : "border-amber-300 text-amber-700 dark:border-amber-800 dark:text-amber-300")}>{item.status}</Badge></div><p className="mt-1 font-mono text-[10px] text-stone-500" data-testid={`contribution-repo-${item.pullRequest}`}>{item.repo} · {item.pullRequest}</p></div><ArrowUpRight size={17} className="shrink-0 text-stone-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-rose-500" /></div><p className="mt-4 max-w-2xl text-sm leading-6 text-stone-600 dark:text-stone-300" data-testid={`contribution-description-${item.pullRequest}`}>{item.description}</p><div className="mt-4 flex flex-wrap gap-2">{item.tags.map((tag) => <span key={tag} className="font-mono text-[10px] uppercase tracking-wide text-stone-400">#{tag.replaceAll(" ", "-")}</span>)}</div></a>) : <div className="p-8 text-sm text-stone-500" data-testid="contributions-empty-state">No contributions match that search yet.</div>}</div>
               </div></div>
