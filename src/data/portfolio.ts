@@ -49,6 +49,7 @@ export const projects: Project[] = [
       "I built it around structured evidence first: YOLO perception, ByteTrack identities, temporal behaviour rules, SQLite incident history, and a grounded assistant that explains only what the evidence supports.",
     highlights: ["YOLO + ByteTrack temporal tracking", "Explainable behaviour and risk scoring", "SQLite evidence replay + grounded assistant"],
     repoUrl: "https://github.com/Vaishnavi220506/kavach-video-intelligence",
+    liveUrl: "https://forklift-safety-ai.vercel.app/",
     tags: ["Python", "OpenCV", "YOLO", "FastAPI"],
     visual: "kavach",
   },
