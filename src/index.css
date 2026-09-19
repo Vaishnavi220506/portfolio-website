@@ -4132,6 +4132,20 @@
     radial-gradient(circle at 12% 80%, rgba(196, 181, 253, .32), transparent 26%),
     linear-gradient(135deg, #371631, #20152f 58%, #132c2b);
 }
+.project-visual-surface-stempulse {
+  justify-content: flex-start;
+  gap: .75rem;
+  padding: clamp(1.25rem, 3.5vw, 2.25rem);
+}
+.project-visual-surface-stempulse strong {
+  max-width: 15rem;
+  font-size: clamp(2.15rem, 4.3vw, 3.25rem);
+  line-height: .88;
+}
+.project-visual-surface-stempulse .project-visual-surface-steps {
+  margin-top: auto;
+  margin-bottom: 2.8rem;
+}
 .project-visual-surface::before,
 .project-visual-surface::after {
   position: absolute;
@@ -4223,6 +4237,17 @@
   }
   .project-visual-surface strong {
     font-size: clamp(2rem, 11vw, 3rem);
+  }
+  .project-visual-surface-stempulse {
+    gap: .75rem;
+    padding: 1.25rem;
+  }
+  .project-visual-surface-stempulse strong {
+    font-size: clamp(1.9rem, 9.5vw, 2.5rem);
+    line-height: .88;
+  }
+  .project-visual-surface-stempulse .project-visual-surface-steps {
+    margin-bottom: 2.2rem;
   }
   .project-visual-surface-steps {
     align-self: flex-start;
